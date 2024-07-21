@@ -12,17 +12,23 @@ const apiCall = async ({ message }) => {
         temperature: 0.7, // creativity 
     }
     try {
+        console.log(`Sending request to OpenAI API with options: ${JSON.stringify(options)}`) // debugging line
+
         const response = await axios.post(
             API_MODEL,
-            { options },
-            { headers: { 'Authorization': `Bearer ${import.meta.env.VITE_API_KEY}` } }
+            options,
+            {
+                headers: {
+                    'Authorization': `Bearer ${import.meta.env.VITE_API_KEY}`
+                }
+            }
         )
-
+        console.log(`Received response from OpenAI API: ${JSON.stringify(response.data)}`) // debugging line
         return response.data.choices[0].text
 
     } catch (err) {
-        console.error(err)
-
+        console.error(`Error from OpenAI API: ${JSON.stringify(err.response ? err.response.data : err.message)}`)
+        throw err
     }
 
 }

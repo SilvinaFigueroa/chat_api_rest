@@ -3,18 +3,26 @@ import apiCall from '../api/chat_api'
 import ChatResponse from './ChatResponse'
 
 const ChatMessage = () => {
-    // useState inside the component 
-    const [message, setMessage] = useState("")
-    const [response, setResponse] = useState("")
-    const [submitted, setSubmitted] = useState(false);
 
+    // useState inside the component 
+    const [message, setMessage] = useState("") // user input message
+    const [apiResponse, setApiResponse] = useState("") // api response 
+    const [submitted, setSubmitted] = useState(false) // form submission handler 
+
+    // separation of concerns: handle the form submission and separately manage the api call with useEffect
+    const handleSubmit = (event) => {
+        event.preventDefault() // Prevent rendering on submission 
+        setSubmitted(true)
+    }
+
+    // api call when the form is submitted 
     useEffect(() => {
         if (!submitted) return // check if form is submitted 
 
-        const callApi = async (event) => {
+        const callApi = async () => {
             try {
-                const apiResponse = await apiCall({ message });
-                setResponse(apiResponse)
+                const response = await apiCall({ message });
+                setApiResponse(response)
                 setSubmitted(false) // Reset the submitted state for future submissions 
 
             } catch (err) {
@@ -27,10 +35,7 @@ const ChatMessage = () => {
         callApi()
     },[submitted, message]) // trigger when submitted and/or message are updated
 
-    const handleSubmit = (event) => {
-        event.preventDefault() // Prevent rendering on submission 
-        setSubmitted(true)
-    }
+
 
     return (
         <>
@@ -44,7 +49,7 @@ const ChatMessage = () => {
                 <button type='submit'>Chat</button>
             </form>
 
-            <ChatResponse response={response} />
+            <ChatResponse response={apiResponse} />
         </>
     )
 

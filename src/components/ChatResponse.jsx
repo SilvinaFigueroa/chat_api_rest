@@ -3,7 +3,7 @@ import React from 'react'
 const ChatResponse = ({response}) => {
     return (
         <>
-            <div>ChatResponse</div>
+            <h2>ChatResponse</h2>
             <p>{response}</p>
         </>
 
