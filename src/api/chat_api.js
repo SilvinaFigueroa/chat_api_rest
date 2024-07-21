@@ -1,14 +1,8 @@
-
-import { useState } from 'react'
 import axios from 'axios'
-
 
 const API_MODEL = "https://api.openai.com/v1/engines/gpt-3.5-turbo-0125/completions"
 
-
-const apiCall = ({ message }) => {
-
-    const [chatResponse, setChatResponse] = useState(null);
+const apiCall = async ({ message }) => {
 
     const options = {
         prompt: message,
@@ -17,23 +11,20 @@ const apiCall = ({ message }) => {
         stop: null,
         temperature: 0.7, // creativity 
     }
+    try {
+        const response = await axios.post(
+            API_MODEL,
+            { options },
+            { headers: { 'Authorization': `Bearer ${process.env.API_KEY}` } }
+        )
 
-    const getResponse = async () => {
-        try {
-            const response = await axios.post(API_MODEL,
-                { options },
-                { headers: { 'Authorization': `Bearer ${process.env.API_KEY}` } }
-            )
+        return response.data.choices[0].text
 
-            setChatResponse(response.data.choices[0].text)
-
-            return chatResponse
-
-        } catch (err) {
-            console.error(err)
-
-        }
+    } catch (err) {
+        console.error(err)
 
     }
+
 }
+
 export default apiCall
