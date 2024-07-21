@@ -1,45 +1,40 @@
 import { useEffect, useState } from 'react'
 import apiCall from '../api/chat_api'
+import ChatResponse from './ChatResponse'
 
 const ChatMessage = () => {
 
     const [message, setMessage] = useState("")
+    const [response, setResponse] = useState("")
 
-    // calling the API inside a useEffect function to prevent rendering the component
-    useEffect(({message}) => {
+    const callApi = async (event) => {
+        event.preventDefault() // Prevent rendering on submission 
 
-        const callApi = async () => {
-            try {
-                const response = await apiCall({message});
+        try {
+            const apiResponse = await apiCall({ message });
+            setResponse(apiResponse)
 
-                
-            } catch (err) {
-
-                console.error(err)
-                if (err.response && err.response.status === 429) {
-                    console.error('Rate limit exceeded. Retrying...');
-                    // Retry logic with delay
-                    setTimeout(callApi, 100000);
-                } else {
-                    console.error(err);
-                    setError(err);
-                }
-            }
+        } catch (err) {
+            console.error(err)
         }
-        callApi()
-    }, [])
+    }
 
     return (
-        <form>
-            <h2>Type your Message here</h2>
-            {/* get the text area message (event.target.value) and set the state to pass is as props between components */}
-            <textarea value={message}
-            onChange={ (inputChat) => setMessage(inputChat.target.value)}
-            placeholder='Type your message here...' />
+        <>
+            <form>
+                <h2>Type your Message here</h2>
+                {/* get the text area message (event.target.value) and set the state to pass is as props between components */}
+                <textarea value={message}
+                    onChange={(inputChat) => setMessage(inputChat.target.value)}
+                    placeholder='Type your message here...' />
 
-            <button type='submit' onClick={callApi}>Chat</button>
-        </form>
+                <button type='submit' onClick={callApi}>Chat</button>
+            </form>
+
+            <ChatResponse response={response} />
+        </>
     )
+
 }
 
 export default ChatMessage

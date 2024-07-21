@@ -15,7 +15,7 @@ const apiCall = async ({ message }) => {
         const response = await axios.post(
             API_MODEL,
             { options },
-            { headers: { 'Authorization': `Bearer ${process.env.API_KEY}` } }
+            { headers: { 'Authorization': `Bearer ${import.meta.env.VITE_API_KEY}` } }
         )
 
         return response.data.choices[0].text
