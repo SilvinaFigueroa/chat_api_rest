@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import apiCall from './api/chat_api'
 import ChatMessage from './components/ChatMessage'
+import ChatResponse from './components/ChatResponse'
 
 function App() {
   const [message, setMessage] = useState("")
@@ -25,13 +26,13 @@ function App() {
         }
       }
     }
-
     callApi()
   }, [])
 
   return (
     <>
       <ChatMessage/>
+      <ChatResponse/>
     </>
   )
 }

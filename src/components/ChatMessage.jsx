@@ -5,7 +5,7 @@ const ChatMessage = () => {
     <form>
         <h2>Type your Message here</h2>
         <input type="text"/>
-        <button type='submit'>Chat</button>
+        <button type='submit' onClick={getResponse}>Chat</button>
     </form>
   )
 }
