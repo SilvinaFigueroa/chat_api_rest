@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import apiCall from './api/chat_api'
+import ChatMessage from './components/ChatMessage'
 
 function App() {
   const [message, setMessage] = useState("")
@@ -30,8 +31,7 @@ function App() {
 
   return (
     <>
-      <h1>Chat Response</h1>
-      {JSON.stringify(chatResponse)}
+      <ChatMessage/>
     </>
   )
 }
