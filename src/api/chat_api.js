@@ -38,7 +38,8 @@
 
 
 // Google Gemini Implementation
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
+
+import { GoogleGenerativeAI} from "@google/generative-ai";
 import systemInstruction from "./system_instruction"
 
 // Use environment variables for API key
