@@ -47,30 +47,31 @@ const ChatMessage = () => {
 
     return (
         <>
+            <Intro />
+            <div class="intro-page">
+                <form className="intro-form" onSubmit={handleSubmit}>
+                    {/* get the text area message (event.target.value) and set the state to pass is as props between components */}
 
-        <Intro/>
+                    <input type='text' value={name}
+                        onChange={(name) => setName(name.target.value)}
+                        placeholder='Your Name' required
+                        className="form-input" />
 
-            <form className="intro-form" onSubmit={handleSubmit}>
-                {/* get the text area message (event.target.value) and set the state to pass is as props between components */}
+                    <input type='text' value={career}
+                        onChange={(career) => setCareer(career.target.value)}
+                        placeholder='Career you want to pursue' required
+                        className="form-input" />
 
-                <input type='text' value={name}
-                    onChange={(name) => setName(name.target.value)}
-                    placeholder='Your Name' required
-                    className="form-input"/>
+                    <textarea value={message}
+                        onChange={(inputMessage) => setMessage(inputMessage.target.value)}
+                        placeholder='Any additional information for our advisor'
+                        className="form-textarea" />
 
-                <input type='text' value={career}
-                    onChange={(career) => setCareer(career.target.value)}
-                    placeholder='Career you want to pursue' required 
-                    className="form-input"/>
-
-                <textarea value={message}
-                    onChange={(inputMessage) => setMessage(inputMessage.target.value)}
-                    placeholder='Any additional information for our advisor' 
-                    className="form-textarea"/>
-
-                <button type='submit' className="form-button">Start</button>
-            </form>
+                    <button class='btn' type='submit'>Start</button>
+                </form>
+            </div>
         </>
+
     )
 }
 

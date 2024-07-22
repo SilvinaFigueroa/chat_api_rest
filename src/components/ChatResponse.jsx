@@ -12,7 +12,7 @@ const ChatResponse = ({ response, name }) => {
     return (
         <div className="chat-response">
             <ReactMarkdown>{response}</ReactMarkdown>
-            <button className="start-over-btn" onClick={redirectMain}>Start Over</button>
+            <button class='btn' onClick={redirectMain}>Start Over</button>
         </div>
 
     )

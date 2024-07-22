@@ -7,9 +7,13 @@ const Responses = () => {
 
     return (
         // Pass the response to the component
-        <div className="response-page">
+        <div className='response-page'>
             <h2>Personalized Career Path for {name}</h2>
-            <ChatResponse response={response} />
+            <div className="response-container">
+                <div className="response-content" >
+                    <ChatResponse response={response} />
+                </div>
+            </div>
         </div>
     )
 }
