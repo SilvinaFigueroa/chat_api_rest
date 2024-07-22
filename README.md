@@ -4,6 +4,8 @@
 
 Tech Pathway Advisor is a career advisor chatbot designed to assist users in creating their career roadmap for breaking into the tech industry. The application provides evidence-based, actionable tips and strategies in a friendly, supportive, and motivational tone. The advice is personalized based on the user's goals and challenges.
 
+Website available on [**Tech Pathway Advisor**](https://tech-advisor.netlify.app/)
+
 ## Tech Stack
 
 ### Frontend
@@ -36,12 +38,19 @@ Tech Pathway Advisor is a career advisor chatbot designed to assist users in cre
 
 ## API
 
-- **Google Generative AI (Gemini AI)**: The API used for generating personalized career advice. You need to add your API key to the environment variables.
+- **Google Generative AI (Gemini AI)**: Model used: gemini-1.5-flash
+When using the free version of the Gemini AI model, Google may log and store data for service improvement purposes. This includes text inputs and generated outputs. Users should be aware of this data usage when using the free version of the service. For more details, refer to Google's [AI Principles](https://ai.google/principles/) and their [Privacy Policy](https://policies.google.com/privacy).
+
 
 ## Deployment
 
-The application is deployed on [Netlify](https://tech-advisor.netlify.app/) using [Netlify App](https://app.netlify.com/).
+The application is deployed using [Netlify App](https://app.netlify.com/).
 
 ## Images
 
-Images used in the application are from [Undraw](https://undraw.co/).
+Images used in the application are from [Undraw](https://undraw.co/)
+
+
+
+
+
