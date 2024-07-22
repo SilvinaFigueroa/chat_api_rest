@@ -31,7 +31,7 @@ const ChatMessage = () => {
                 const response = await apiCall({ name, career, message });
                 setApiResponse(response)
                 setSubmitted(false) // Reset the submitted state for future submissions 
-                navigate('/response') // Redirect user to the response page 
+                navigate('/responses', { state: { response } }) // Redirect user to the response page and pass state "responses" to be uses on the page
 
             } catch (err) {
                 console.error(err)
