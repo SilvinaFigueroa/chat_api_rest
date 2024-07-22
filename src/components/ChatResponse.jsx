@@ -1,21 +1,19 @@
-import React from 'react'
+import ReactMarkdown from 'react-markdown';
 import { useNavigate } from 'react-router-dom'
 
 
-const ChatResponse = ({response}) => {
+const ChatResponse = ({ response, name }) => {
     const navigate = useNavigate()
 
-    const redirectMain = ()=>{
+    const redirectMain = () => {
         navigate('/')
     }
-    
-    return (
-        <>
-            <h2>ChatResponse</h2>
-            <p>{response}</p>
 
-            <button onClick={redirectMain}>Start Over</button>
-        </>
+    return (
+        <div className="chat-response">
+            <ReactMarkdown>{response}</ReactMarkdown>
+            <button className="start-over-btn" onClick={redirectMain}>Start Over</button>
+        </div>
 
     )
 }

@@ -3,12 +3,15 @@ import { useLocation } from 'react-router-dom' // useLocation to access the stat
 
 const Responses = () => {
     const location = useLocation()
-    const { response } = location.state
+    const { name, response } = location.state
 
-  return (
-    // Pass the response to the component
-    <ChatResponse response={response}/>
-  )
+    return (
+        // Pass the response to the component
+        <div className="response-page">
+            <h2>Personalized Career Path for {name}</h2>
+            <ChatResponse response={response} />
+        </div>
+    )
 }
 
 export default Responses

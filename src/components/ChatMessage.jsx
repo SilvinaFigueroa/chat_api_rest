@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import apiCall from '../api/chat_api'
-import ChatResponse from './ChatResponse'
 import { useNavigate } from 'react-router-dom'
+import Intro from './Intro'
 
 const ChatMessage = () => {
 
@@ -31,7 +31,7 @@ const ChatMessage = () => {
                 const response = await apiCall({ name, career, message });
                 setApiResponse(response)
                 setSubmitted(false) // Reset the submitted state for future submissions 
-                navigate('/responses', { state: { response } }) // Redirect user to the response page and pass state "responses" to be uses on the page
+                navigate('/responses', { state: { name, response } }); // Pass the name and response data to the response page
 
             } catch (err) {
                 console.error(err)
@@ -47,23 +47,28 @@ const ChatMessage = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <h2>Type your Message here</h2>
+
+        <Intro/>
+
+            <form className="intro-form" onSubmit={handleSubmit}>
                 {/* get the text area message (event.target.value) and set the state to pass is as props between components */}
 
                 <input type='text' value={name}
                     onChange={(name) => setName(name.target.value)}
-                    placeholder='Your Name' required/>
+                    placeholder='Your Name' required
+                    className="form-input"/>
 
                 <input type='text' value={career}
                     onChange={(career) => setCareer(career.target.value)}
-                    placeholder='Career you want to pursue' required />
+                    placeholder='Career you want to pursue' required 
+                    className="form-input"/>
 
                 <textarea value={message}
                     onChange={(inputMessage) => setMessage(inputMessage.target.value)}
-                    placeholder='Any additional information for our advisor' />
+                    placeholder='Any additional information for our advisor' 
+                    className="form-textarea"/>
 
-                <button type='submit'>Start</button>
+                <button type='submit' className="form-button">Start</button>
             </form>
         </>
     )
