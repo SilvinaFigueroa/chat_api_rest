@@ -8,24 +8,23 @@
 
 /* Intro Page */
 
-
 .intro-page {
   background-image: url('./images/undraw_code_thinking_re_gka2.svg');
   background-size: contain;
   background-repeat: no-repeat;
   padding: 40px;
-  min-height: 50vh; 
+  min-height: 50vh;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
 }
 
-.intro-form  {
+.intro-form {
   position: absolute;
-  max-width: 350px; 
+  max-width: 350px;
   width: 100%;
   padding: 20px;
-  background-color: rgb(85, 83, 110); 
+  background-color: rgb(85, 83, 110);
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(28, 1, 78, 0.9);
 }
@@ -70,9 +69,9 @@
 /* Response Page */
 
 .response-page {
-  background-image: url('./images/undraw_online_resume_re_ru7s.svg'); 
+  background-image: url('./images/undraw_online_resume_re_ru7s.svg');
   background-size: contain;
-  min-height: 100vh; 
+  min-height: 100vh;
   background-repeat: no-repeat;
   padding: 40px;
 }
@@ -81,7 +80,7 @@
   background-color: #f9f9f9;
   border-radius: 10px;
   padding: 40px;
-  max-height: 50vh;
+  height: auto;
   max-width: 905px;
   margin: 40px auto;
   margin-top: 50px;
@@ -89,7 +88,7 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
-.response-container{
+.response-container {
   color: #2c3e50;
   margin-bottom: 20px;
   font-size: 16px;
@@ -107,11 +106,15 @@
 }
 
 /* Heading Styles */
-h1, h2, h4, h5 {
+
+h1,
+h2,
+h4,
+h5 {
   margin-bottom: 20px;
 }
 
-.response-page h2{
+.response-page h2 {
   margin-top: 150px;
 }
 
@@ -134,4 +137,49 @@ h4 {
 h5 {
   color: #7f8c8d;
   font-size: 1.2em;
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 768px) {
+  .intro-page {
+      background-image: none; 
+      justify-content: center;
+      align-items: center;
+      text-align: center; 
+  }
+
+  .intro-form {
+      max-width: 80%; 
+      width: 100%;
+      padding: 20px;
+  }
+
+  .response-page {
+      background-image: none; 
+      padding: 20px;
+  }
+
+  .response-container {
+      max-width: 100%; 
+      padding: 10px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.0);
+      margin-top: 0px;
+      height: auto;
+
+  }
+
+  h1, h2, h4, h5 {
+      font-size: 1.4em; 
+  }
+
+  .btn {
+      width: 100%;
+      padding-bottom: 20px;
+  }
+
+  .response-page h2 {
+      margin-top: 0px; 
+  }
 }
